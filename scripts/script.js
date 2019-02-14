@@ -9,7 +9,7 @@ $(document).ready(function() {
         event.preventDefault();
         const value = document.getElementById("account-input").value;
         console.log(value);
-        const url = "http://haveibeenpwned.com/api/v2/breachedaccount/" + value;
-        fetch(url, {mode: "cors"}).then(onResponse())
+        const url = "https://haveibeenpwned.com/api/v2/breachedaccount/" + value;
+        fetch(url, {mode: "cors", headers : {"User-Agent": "Pwnage-Checker-For-iOS"}}).then(onResponse())
     });
 });

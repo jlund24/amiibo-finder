@@ -10,6 +10,6 @@ $(document).ready(function() {
         const value = document.getElementById("account-input").value;
         console.log(value);
         const url = "http://haveibeenpwned.com/api/v2/breachedaccount/" + value;
-        fetch(url).then(onResponse())
+        fetch(url, {mode: "cors"}).then(onResponse())
     });
 });

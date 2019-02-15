@@ -1,3 +1,7 @@
+body {
+    
+}
+
 #main-title {
     text-align: center;
 }
@@ -8,11 +12,95 @@
     
 }
 
+#results {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
 .amiibo-character-card {
     text-align: center;
+    margin: 20px;
+    border-style: solid;
+    border-color: #eeeeee;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 7px;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+.amiibo-character-card:hover {
+    background: #eeeeee;
+}
+
+.amiibo-character-card-a {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.amiibo-character-name {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12pt;
+    margin-bottom: 10px;
+}
+
+.amiibo-series-title {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.brief-info {
+    margin-top: 20px;
+}
+
+.amiibo-character-card a {
+    text-decoration: none;
+    color: black;
 }
 
 .amiibo-character-image {
-    max-height: 200px;
+    max-height: 300px;
     max-width: 400px;
+}
+
+.amiibo-character-release-dates {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 10px;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.release-date-container {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.release-date-title {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.additional-info {
+    border-style: none;
+    margin-top: 10px;
+}
+
+.additional-info-title {
+    font-size: 16pt;
+    margin-top: -15px;
+    margin-bottom: 5px;
+}
+
+.release-dates-title {
+    font-style: italic;
 }

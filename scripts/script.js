@@ -1,23 +1,64 @@
 $(document).ready(function() {
     
+    function modifyDateString(dateString)
+    {
+        var year = dateString.substr(0,4);
+        dateString = dateString.slice(5);
+        dateString += "-" + year;
+        return dateString;
+        
+    }
     function buildCharacterCards(data)
     {
         html = "";
         for (let i = 0; i < data.length; i++)
         {
-            html += "<div class='amiibo-character-card' id='amiibo-character-card-" + i + "'>";
-            html += "<img class='amiibo-character-image' src='" + data[i].image + "'/>" 
-            html += "<div class='amiibo-character-name'>" + data[i].name + "</div>";
-            html += "<div class='amiibo-character-title'>" + data[i].character + "</div>";
-            html += "<div class='amiibo-character-amiibo-series'>" + data[i].amiiboSeries + "</div>";
-            html += "<div class='amiibo-character-game-series'>" + data[i].gameSeries + "</div>";
-            html += "<div class='amiibo-character-release-dates'>";
-                html += "<div class='release-date-us'>";
-                    html += "<img src='../images/us-flag.png'/>"
-                html += "</div>"; //end release-date-us
-            html += "</div>"; //end amiibo-character-release dates
+            
+            html += "<div class='amiibo-character-card' >";
+                html += '<a class="amiibo-character-card-a" data-toggle="collapse" href="#amiibo-character-card-' + i +'" role="button" aria-expanded="false" aria-controls="collapseExample">';
+                    html += "<div>";
+                    html += "<img class='amiibo-character-image' src='" + data[i].image + "'/>";
+                    html += "</div>";
+                    html += "<div class='brief-info'>"; 
+                        html += "<div class='amiibo-character-name'>" + data[i].name + "</div>";
+                        // html += "<div class='amiibo-character-title'>" + data[i].character + "</div>";
+                    html += "</div>"; //end brief info div
+                    html += '<div class="collapse" id="amiibo-character-card-' + i + '">';
+                    html += '<div class="card card-body additional-info">';
+                        // html += "<div class='additional-info-title'>Additional Info</div>";
+                        html += "<div class='amiibo-character-amiibo-series'><span class='amiibo-series-title'>Amiibo Series:</span>" + data[i].amiiboSeries + "</div>";
+                        html += "<div class='amiibo-character-game-series'><span class='amiibo-series-title'>Game Series:</span>" + data[i].gameSeries + "</div>";
+                        html += "<div class='amiibo-character-release-dates'>";
+                            html += "<div class='release-dates-title'>Release Dates</div>";
+                            html += "<div class='row'>";
+                                html += "<div class='release-date-container'>";
+                                    html += "<div class='release-date-title'>NA:</div>";
+                                    html += "<div class='release-date-date'>" + modifyDateString(data[i].release.na) + "</div>";
+                                html += "</div>"; //end release-date-na
+                                html += "<div class='release-date-container'>";
+                                    html += "<div class='release-date-title'>EU:</div>";
+                                    html += "<div class='release-date-date'>" + modifyDateString(data[i].release.eu) + "</div>";
+                                html += "</div>"; //end release-date-eu
+                            html += "</div>"; //end row
+                            html += "<div class='row'>";
+                                html += "<div class='release-date-container'>";
+                                    html += "<div class='release-date-title'>AU:</div>";
+                                    html += "<div class='release-date-date'>" + modifyDateString(data[i].release.au) + "</div>";
+                                html += "</div>"; //end release-date-au
+                                html += "<div class='release-date-container'>";
+                                    html += "<div class='release-date-title'>JP:</div>";
+                                    html += "<div class='release-date-date'>" + modifyDateString(data[i].release.jp) + "</div>";
+                                html += "</div>"; //end release-date-jp
+                            html += "</div>"; //end row
+                        html += "</div>"; //end amiibo-character-release dates
+                    html += "</div>"; //end card card-body
+                    html += "</div>"; //end collapse
+                html += "</a>"; //end collapse target
+            
+            
             html += "</div>"; //end amiibo-card
         }
+        
         return html;
         
     }

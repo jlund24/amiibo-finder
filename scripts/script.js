@@ -1,7 +1,7 @@
 $(document).ready(function() {
     
     const allRequest = "http://www.amiiboapi.com/api/amiibo/";
-    console.log("loaded");
+    
     fetch(allRequest).then(function(response) {
         return response.json();
         }).then(onResponse);
@@ -21,19 +21,24 @@ $(document).ready(function() {
     function buildCharacterCards(data)
     {
         html = "";
+        if (data == null)
+        {
+            return html;
+        }
+
         for (let i = 0; i < data.length; i++)
         {
-            
+            var id = Math.floor(Math.random() * 1000) + 1;
             html += "<div class='amiibo-character-card' >";
-                html += '<a class="amiibo-character-card-a" data-toggle="collapse" href="#amiibo-character-card-' + i +'" role="button" aria-expanded="false" aria-controls="collapseExample">';
+                html += '<a class="amiibo-character-card-a" data-toggle="collapse" href="#amiibo-character-card-' + id + data[i].head +'" role="button" aria-expanded="false" aria-controls="collapseExample">';
                     html += "<div>";
                     html += "<img class='amiibo-character-image' src='" + data[i].image + "'/>";
                     html += "</div>";
                     html += "<div class='brief-info'>"; 
-                        html += "<div class='amiibo-character-name'>" + data[i].name + "</div>";
+                        html += "<div class='amiibo-character-name' onclick='searchCharacters()'>" + data[i].name + "</div>";
                         // html += "<div class='amiibo-character-title'>" + data[i].character + "</div>";
                     html += "</div>"; //end brief info div
-                    html += '<div class="collapse" id="amiibo-character-card-' + i + '">';
+                    html += '<div class="collapse" id="amiibo-character-card-' + id + data[i].head + '">';
                     html += '<div class="card card-body additional-info">';
                         // html += "<div class='additional-info-title'>Additional Info</div>";
                         html += "<div class='amiibo-character-amiibo-series'><span class='amiibo-series-title'>Amiibo Series:</span>" + data[i].amiiboSeries + "</div>";
@@ -76,21 +81,86 @@ $(document).ready(function() {
     function onResponse(json)
     {
         console.log(json);
+        // document.getElementById("results").innerHTML = "";
         results = "";
         
         results += buildCharacterCards(json.amiibo);
         
-        document.getElementById("results").innerHTML = results;
-
+        // if (results === "")
+        // {
+        //     results = "<div class='no-results'>No amiibo found :(</div>";
+        // }
+        document.getElementById("results").innerHTML += results;
     }
+
+    async function searchCharacters(query)
+    {
+        const characterRequest = "http://www.amiiboapi.com/api/amiibo/?character=" + query;
+        fetch(characterRequest).then(function(response) {
+            return response.json();
+            }).then(onResponse);
+    }
+
+    async function searchGameSeries(query)
+    {
+        const gameSeriesRequest = "http://www.amiiboapi.com/api/amiibo/?gameseries=" + query;
+        fetch(gameSeriesRequest).then(function(response) {
+            return response.json();
+            }).then(onResponse);
+    }
+
+    async function searchAmiiboSeries(query)
+    {
+        const amiiboSeriesRequest = "http://www.amiiboapi.com/api/amiibo/?amiiboSeries=" + query;
+        fetch(amiiboSeriesRequest).then(function(response) {
+            return response.json();
+            }).then(onResponse);
+    }
+
+    function searchAll(query)
+    {
+        const characterRequest = "http://www.amiiboapi.com/api/amiibo/?character=" + query;
+        const gameSeriesRequest = "http://www.amiiboapi.com/api/amiibo/?gameseries=" + query;
+        const amiiboSeriesRequest = "http://www.amiiboapi.com/api/amiibo/?amiiboSeries=" + query;
+
+        fetch(characterRequest).then(function(response) {
+            var amiiboList = []
+            console.log(response.json().amiibo);
+            if (response.json().hasOwnProperty("amiibo"))
+            {
+                amiiboList.push(response.json().amiibo);
+            }
+            console.log(amiiboList);
+            return amiiboList;
+        }).then(function (amiiboList) {
+            fetch(gameSeriesRequest).then(function(response1) {
+            if (response1.json().hasOwnProperty("amiibo"))
+            {
+                amiiboList.push(response1.json().amiibo);
+            }
+            console.log(amiiboList);
+            return amiiboList
+        });
+        });
+    }
+
     document.getElementById("account-submit").addEventListener("click", function(event)
     {
         event.preventDefault();
         const value = document.getElementById("account-input").value;
         console.log(value);
-        const characterRequest = "http://www.amiiboapi.com/api/amiibo/?character=" + value;
-        fetch(characterRequest).then(function(response) {
-            return response.json();
-            }).then(onResponse);
+
+        document.getElementById("results").innerHTML = "";
+        searchCharacters(value).then(searchGameSeries(value)).then(searchAmiiboSeries(value));
+        // searchGameSeries(value);
+        // searchAmiiboSeries(value);
+
+        //searchAll(value);
+
+        // const characterRequest = "http://www.amiiboapi.com/api/amiibo/?character=" + value;
+        // fetch(characterRequest).then(function(response) {
+        //     return response.json();
+        //     }).then(onResponse);
+         
     });
 });

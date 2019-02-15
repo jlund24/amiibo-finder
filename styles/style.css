@@ -156,3 +156,8 @@ body {
 .release-dates-title {
     font-style: italic;
 }
+
+.no-results {
+    margin-top: 30px;
+    font-size: 18pt;
+}

@@ -4,6 +4,50 @@ body {
 
 #main-title {
     text-align: center;
+    color: black;
+    font-family: 'Baumans', cursive;
+    font-weight: bold;
+    font-size: 56pt;
+}
+
+.title {
+    text-align: center;
+    margin-top :20px;
+    margin-bottom: 20px;
+    
+}
+
+.title-image {
+    max-width: 75%;
+    border-style: solid;
+    border-color: #e4000f;
+    border-width: 3px;
+    border-radius: 20px;
+}
+
+#account-submit {
+    background: #e4000f;
+    color: white;
+}
+
+#account-submit:focus {
+    box-shadow: none;
+}
+
+#account-input:focus {
+    border-color: black;
+    box-shadow: none;
+}
+
+#account-submit:hover {
+    /* background: white;
+    color: #e4000f;
+    border-color: #e4000f; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.account-submit-container {
+    text-align: center;
 }
 
 .search {
@@ -24,14 +68,21 @@ body {
     border-style: solid;
     border-color: #eeeeee;
     border-width: 1px;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 7px;
     min-width: 300px;
     max-width: 400px;
+    background: #eeeeee;
 }
 
 .amiibo-character-card:hover {
-    background: #eeeeee;
+    
+    /* background: #e4000f;
+    border-color: #e4000f; */
+    /* color: white; */
+    background: #bbbbbb;
+    border-color: #bbbbbb;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 
 .amiibo-character-card-a {
@@ -64,6 +115,7 @@ body {
 .amiibo-character-image {
     max-height: 300px;
     max-width: 400px;
+    margin-top: 10px;
 }
 
 .amiibo-character-release-dates {

@@ -1,7 +1,17 @@
 $(document).ready(function() {
     
+    const allRequest = "http://www.amiiboapi.com/api/amiibo/";
+    console.log("loaded");
+    fetch(allRequest).then(function(response) {
+        return response.json();
+        }).then(onResponse);
+    
     function modifyDateString(dateString)
     {
+        if (dateString == null)
+        {
+            return "unknown";
+        }
         var year = dateString.substr(0,4);
         dateString = dateString.slice(5);
         dateString += "-" + year;
@@ -78,8 +88,8 @@ $(document).ready(function() {
         event.preventDefault();
         const value = document.getElementById("account-input").value;
         console.log(value);
-        const url = "http://www.amiiboapi.com/api/amiibo/?character=" + value;
-        fetch(url).then(function(response) {
+        const characterRequest = "http://www.amiiboapi.com/api/amiibo/?character=" + value;
+        fetch(characterRequest).then(function(response) {
             return response.json();
             }).then(onResponse);
     });

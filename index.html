@@ -2,33 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>Security Checker</title>
+    <title>Amiibo Finder</title>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script text="type/javascript" src="scripts/script.js">
     </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baumans" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
     
     
-    <h1 id="main-title">Security Checker</h1>
-    
+    <h1 id="main-title">amiibo finder</h1>
+    <!-- <div class="title">
+      <img src="https://fontmeme.com/permalink/190215/14269f6a66df24a7301d5cc8ed8875e1.png" alt="nintendo-font" border="0" class="title-image">
+    </div> -->
     
 
     <form class="search">
         <div class="form-group search-bar">
-          <input type="email" class="form-control" id="account-input" aria-describedby="emailHelp" placeholder="Enter email to check">
+          <input type="ext" class="form-control" id="account-input" aria-describedby="emailHelp" placeholder="Enter a character">
           <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
         </div>
         
-        <div class="form-group form-check">
+        <!-- <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> -->
+        <div class="account-submit-container">
+            <button type="submit" id="account-submit" class="btn">Submit</button>
         </div>
-        <button type="submit" id="account-submit" class="btn btn-primary">Submit</button>
+        
       </form>
     
     

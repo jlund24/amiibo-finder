@@ -7,3 +7,12 @@
     margin: 0 auto;
     
 }
+
+.amiibo-character-card {
+    text-align: center;
+}
+
+.amiibo-character-image {
+    max-height: 200px;
+    max-width: 400px;
+}

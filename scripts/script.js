@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    const allRequest = "http://www.amiiboapi.com/api/amiibo/";
+    const allRequest = "https://www.amiiboapi.com/api/amiibo/";
     
     fetch(allRequest).then(function(response) {
         return response.json();

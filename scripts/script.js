@@ -95,7 +95,7 @@ $(document).ready(function() {
 
     async function searchCharacters(query)
     {
-        const characterRequest = "http://www.amiiboapi.com/api/amiibo/?character=" + query;
+        const characterRequest = "https://www.amiiboapi.com/api/amiibo/?character=" + query;
         fetch(characterRequest).then(function(response) {
             return response.json();
             }).then(onResponse);
@@ -103,7 +103,7 @@ $(document).ready(function() {
 
     async function searchGameSeries(query)
     {
-        const gameSeriesRequest = "http://www.amiiboapi.com/api/amiibo/?gameseries=" + query;
+        const gameSeriesRequest = "https://www.amiiboapi.com/api/amiibo/?gameseries=" + query;
         fetch(gameSeriesRequest).then(function(response) {
             return response.json();
             }).then(onResponse);
@@ -111,7 +111,7 @@ $(document).ready(function() {
 
     async function searchAmiiboSeries(query)
     {
-        const amiiboSeriesRequest = "http://www.amiiboapi.com/api/amiibo/?amiiboSeries=" + query;
+        const amiiboSeriesRequest = "https://www.amiiboapi.com/api/amiibo/?amiiboSeries=" + query;
         fetch(amiiboSeriesRequest).then(function(response) {
             return response.json();
             }).then(onResponse);
@@ -119,9 +119,9 @@ $(document).ready(function() {
 
     function searchAll(query)
     {
-        const characterRequest = "http://www.amiiboapi.com/api/amiibo/?character=" + query;
-        const gameSeriesRequest = "http://www.amiiboapi.com/api/amiibo/?gameseries=" + query;
-        const amiiboSeriesRequest = "http://www.amiiboapi.com/api/amiibo/?amiiboSeries=" + query;
+        const characterRequest = "https://www.amiiboapi.com/api/amiibo/?character=" + query;
+        const gameSeriesRequest = "https://www.amiiboapi.com/api/amiibo/?gameseries=" + query;
+        const amiiboSeriesRequest = "https://www.amiiboapi.com/api/amiibo/?amiiboSeries=" + query;
 
         fetch(characterRequest).then(function(response) {
             var amiiboList = []
@@ -157,7 +157,7 @@ $(document).ready(function() {
 
         //searchAll(value);
 
-        // const characterRequest = "http://www.amiiboapi.com/api/amiibo/?character=" + value;
+        // const characterRequest = "https://www.amiiboapi.com/api/amiibo/?character=" + value;
         // fetch(characterRequest).then(function(response) {
         //     return response.json();
         //     }).then(onResponse);
